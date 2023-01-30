@@ -17,7 +17,7 @@ I still want to it so you can edit the names of the people, and update the downl
 
 The print function within the [Pedigree Formatter](formatpedigree.html) isn't the best, but it kind of works, and I'm not updating it until I upgrade the Download Pedigree script and make the Upload Pedigree script functional.
 
-I hope this is intuitive enough for an old grandma to use, it's pretty simple, but maybe it isn't. If you have any problems, you can go [here](githubplaceholder) and publish an issue.
+I hope this is intuitive enough for an old grandma to use, it's pretty simple, but maybe it isn't. If you have any problems, you can go [here](https://github.com/twarped/easypedigree/issues) and publish an issue.
 
 If you think it looks a bit crappy, just imagine a dude, who in his free-time throws together a junky, unofficial, FamilySearch plugin--in less than a month I might add--and who has better things to do.  
   
