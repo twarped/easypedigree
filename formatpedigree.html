@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="formatpedigree.css">
+    <script src="index.js"></script>
+    <script src="formatpedigree.js"></script>
+</head>
+
+<body>
+    <div id="nav-bar">
+        <h1 id="pedigree-name" onclick="setPedigreeNameActive()" ondblclick="if (!pedigreeNameActive) changePedigreeName()">Pedigree Name</h1>
+        <img src="pencil.svg" id="pencil" onclick="changePedigreeName()">
+        <div class="gen">
+            <div>Gens:</div>
+            <div id="total-gens">9999</div>
+        </div>
+        <div id="root-type-toggle-container">
+            <div class="root-type-toggle" id="root-toggle" style="border: 1px solid grey" onclick="toggleRootType(this)">ROOT</div>
+            <div class="root-type-toggle" id="descroot-toggle" style="border: 1px solid white" onclick="toggleRootType(this)">DESCROOT</div>
+        </div>
+        <div id="pedigree-options">
+            <div class="pedigree-option" id="new-pedigree" onclick="loadNewPedigree()">Load New Pedigree</div>
+            <div class="pedigree-option" id="save-pedigree" onclick="savePedigree()">Save Pedigree</div>
+            <div class="pedigree-option" id="print-pedigree" onclick="printPedigree()">Print Pedigree</div>
+            <div class="pedigree-option" id="open-pedigree-in-fs" onclick="//openPedigreeInFS()">Open Pedigree In Family Search</div>
+            <a class="menu-option" id="modd-option" href="home.html">Home...</a>
+        </div>
+    </div>
+    <div id="menu-bar">
+        <a class="menu-option dropdown" href="home.html">Home</a>
+        <a class="menu-option dropdown" href="bookmarks.html">Install Scripts</a>
+        <a class="menu-option dropdown" href="formatpedigree.html">Pedigree Formatter</a>
+    </div>
+    <div id="nav-bar-hidden"></div>
+    <div id="person-container">
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+        <div class="bl"></div>
+        <div class="person">
+            <div class="name-container">
+                <h2><a>Ancestor Name or Couple</a></h2>
+                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+            </div>
+            <div class="gen">
+                <div>Gen:</div>
+                <div class="gens" style="font-size: 40;">9999</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

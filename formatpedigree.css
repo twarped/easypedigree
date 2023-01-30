@@ -1,0 +1,197 @@
+body {
+    font-family: Tahoma;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 3px 3px gray;
+    background-color: white;
+    z-index: 100;
+}
+
+#nav-bar-hidden {
+    width: 100%;
+    height: 100px;
+}
+
+#pedigree-name {
+    font-weight: 1;
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    width: fit-content;
+    float: left;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#pencil {
+    margin: 0px;
+    box-shadow: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#pedigree-options {
+    margin-top: 22px;
+}
+
+.pedigree-option {
+    float: left;
+    cursor: pointer;
+    font-weight: 1;
+    margin-left: 15px;
+    margin-right: 0px;
+}
+
+#open-pedigree-in-fs {
+    user-select: none;
+    color: grey;
+    cursor: default;
+}
+
+#root-type-toggle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    float: right;
+    font-weight: 1;
+    margin-right: 30px;
+    text-align: center;
+    height: 100%;
+    width: 100px;
+}
+
+.root-type-toggle {
+    user-select: none;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gen {
+    float: right;
+    height: 100%;
+    width: fit-content;
+    text-align: center;
+    margin-right: 20px;
+}
+
+#total-gens {
+    font-size: 60;
+    text-align: right;
+}
+
+.banner {
+    width: 100%;
+    text-align: center;
+    font-weight: 1;
+}
+
+#person-container {
+    height: fit-content;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.person {
+    display: block;
+    width: calc(100% - 60px);
+    height: 80px;
+    border: 1px solid grey;
+    box-shadow: 0px 3px 3px grey;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.person#main {
+    height: 90px;
+    width: calc(100% - 40px);
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.name-container {
+    float: left;
+    width: fit-content;
+    height: 100%
+}
+
+.name-container > h2 {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    font-weight: 1;
+}
+
+.name-container > h3 {
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 0px;
+    margin-top: 0px;
+    font-weight: 1;
+}
+
+#main > .name-container > h3 {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.bl {
+    width: 1px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: grey;
+}
+
+.id {
+    cursor: pointer;
+    width: fit-content;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+toast {
+    color: black;
+    user-select: none;
+    font-size: 20;
+    display: block;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+}

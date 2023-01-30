@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>How To Install FamilySearch Plugins (Chrome Only)</title>
+        <script src="index.js"></script>
+        <script src="bookmarks.js"></script>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="bookmarks.css">
+    </head>
+    <body>
+        <div id="nav-bar">
+            <h1 id="title">How To Install FamilySearch Plugins (Chrome Only)</h1>
+            <div id="menu-options">
+                <div class="menu-option" id="sbboption" onclick="goTo(document.getElementById('show-bookmarks-bar'))">Show Bookmarks Bar</div>
+                <div class="menu-option" id="afoption" onclick="goTo(document.getElementById('add-folder'))">Create Folder</div>
+                <div class="menu-option" id="apsoption" onclick="goTo(document.getElementById('add-save-page'))">Add Save Page</div>
+                <div class="menu-option" id="apuoption" onclick="goTo(document.getElementById('add-upload-page'))">Add Upload Page</div>
+                <div class="menu-option" id="tuoption" onclick="goTo(document.getElementById('to-use'))">To Use</div>
+                <a class="menu-option" id="modd-option" href="home.html">Home...</a>
+            </div>
+        </div>
+        <div id="menu-bar">
+            <a class="menu-option dropdown" href="home.html">Home</a>
+            <a class="menu-option dropdown" href="bookmarks.html">Install Scripts</a>
+            <a class="menu-option dropdown" href="formatpedigree.html">Pedigree Formatter</a>
+        </div>
+        <div id="nav-bar-hidden">
+
+        </div>
+        <h2 id="show-bookmarks-bar">
+            Show Bookmarks Bar:
+        </h2>
+        <p>
+            For Mac: Command+Shift+B
+            <br>
+            For Windows: Control+Shift+B
+        </p>
+        <img src="showbookmarksbar.png">
+        <h2 id="add-folder">
+            Create a new Folder Labeled "FamilySearch Plugins":
+        </h2>
+        <p>
+            Right-click the bookmarks bar, select "Add Folder", and name it "FamilySearch Plugins"
+        </p>
+        <img src="addfolder.png">
+        <img src="addfoldername.png">
+        <h2 id="add-save-page">
+            To install the Save-Pedigree script:
+        </h2>
+        <p>
+            Right-click the folder you just created, and select "Add Page"
+        </p>
+        <img src="addpage.png">
+        <p style="margin-top: 0px;">
+            Rename the page to "Download FamilySearch Pedigree",
+            <br>
+            And replace the existing URL with this text below:
+            <div class="code" onclick="copyText(this.textContent)">
+                javascript:(()=>{var dataStr="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify({"ROOT":(()=>{window.ROOT=[document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelector("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node[data-test-couple-ahnentafel='1']"),...Array.from(document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelectorAll("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node")).filter(c=>{try{returnc.shadowRoot.querySelector("div.couple-wrapper").parentNode.querySelector("button.append-pedigree").title.includes("Collapse")}catch(e){returnfalse}})];returnwindow.ROOT;})().map(couple=>{returncouple.coupleId.slice(0,-2)}).reduce((p,c,i)=>({...p,[window.ROOT[i].attributes["data-test-couple-ahnentafel"].nodeValue]:c}),{}),"ROOTNAMES":(()=>{window.ROOTNAMES=[]})(),"DESCROOT":(()=>{window.DESCROOT=[document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelector("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node[data-test-couple-ahnentafel='1']"),...Array.from(document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelectorAll("#pedigree>div:nth-child(1)>pedigree-couple-renderer.desc-node")).filter(c=>{try{returnc.shadowRoot.querySelector("div.couple-wrapper").parentNode.querySelector("button.append-pedigree").title.includes("Collapse")}catch(e){returnfalse}})];returnwindow.DESCROOT;})().map(couple=>{returncouple.coupleId.slice(0,couple.coupleId.includes(".")?-4:-2)}).reduce((p,c,i)=>({...p,[window.DESCROOT[i].attributes["data-test-couple-ahnentafel"].nodeValue]:c}),{})}));var a=document.createElement("a");a.href=dataStr;a.download=prompt("Pedigree(file)name:","pedigree")+".json";document.body.appendChild(a);a.click();setTimeout(()=>document.body.removeChild(a),0);})();
+            </div>
+        </p>
+        <img src="dfpname.png">
+        <img src="dfpurl.png">
+        <h2 id="add-upload-page">
+            To install the Upload-Pedigree script (Placeholder, doesn't work yet):
+        </h2>
+        <p>
+            Right-click the "FamilySearch Plugins" folder, and select "Add Page"
+        </p>
+        <img src="addpage.png">
+        <p style="margin-top: 0px;">
+            Rename the page to "Upload FamilySearch Pedigree",
+            <br>
+            And replace the existing URL with this text below:
+            <div class="code" onclick="copyText(this.textContent)">
+                javascript:(()=>{var dataStr="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify({"ROOT":(()=>{window.ROOT=[document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelector("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node[data-test-couple-ahnentafel='1']"),...Array.from(document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelectorAll("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node")).filter(c=>{try{returnc.shadowRoot.querySelector("div.couple-wrapper").parentNode.querySelector("button.append-pedigree").title.includes("Collapse")}catch(e){returnfalse}})];returnwindow.ROOT;})().map(couple=>{returncouple.coupleId.slice(0,-2)}).reduce((p,c,i)=>({...p,[window.ROOT[i].attributes["data-test-couple-ahnentafel"].nodeValue]:c}),{}),"ROOTNAMES":(()=>{window.ROOTNAMES=[]})(),"DESCROOT":(()=>{window.DESCROOT=[document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelector("#pedigree>div:nth-child(1)>pedigree-couple-renderer.node[data-test-couple-ahnentafel='1']"),...Array.from(document.querySelector("#main-content-section>tree-app").shadowRoot.querySelector("#pages>tree-pedigree").shadowRoot.querySelector("#pedigree").shadowRoot.querySelectorAll("#pedigree>div:nth-child(1)>pedigree-couple-renderer.desc-node")).filter(c=>{try{returnc.shadowRoot.querySelector("div.couple-wrapper").parentNode.querySelector("button.append-pedigree").title.includes("Collapse")}catch(e){returnfalse}})];returnwindow.DESCROOT;})().map(couple=>{returncouple.coupleId.slice(0,couple.coupleId.includes(".")?-4:-2)}).reduce((p,c,i)=>({...p,[window.DESCROOT[i].attributes["data-test-couple-ahnentafel"].nodeValue]:c}),{})}));var a=document.createElement("a");a.href=dataStr;a.download=prompt("Pedigree(file)name:","pedigree")+".json";document.body.appendChild(a);a.click();setTimeout(()=>document.body.removeChild(a),0);})();
+            </div>
+        </p>
+        <img src="dfpname.png">
+        <img src="dfpurl.png">
+        <h2 id="to-use">
+            To Use:
+        </h2>
+        <p>
+            In theory, it's pretty simple. 
+        </p>
+        <img src="plugins.png" style="height: 100px">
+        <h3>
+            For the Download Script:
+        </h3>
+        <p>
+            Currently, you have to be in portrait pedigree mode to download the pedigree. I chose portrait because it's the most common mode for going far back. You can try it with other modes, but it probably won't work the way you want/expect it to.
+            <br><br>
+            You also have to have the pedigree loaded on the FamilySearch website.
+            <br><br>
+            It's not the best solution currently, but it works okay enough for now.
+        </p>
+        <h3>
+            For the Upload Script:
+        </h3>
+        <p class="last">
+            When I finally make the script to work, you can be on any website when you run the Download Script. It will by default send you to a portrait pedigree on FamilySearch, prompt you to open a saved pedigree, and then click all the buttons for you.
+            <br><br>
+            You will also be able to load it from inside the <a href="formatpedigree.html" class="init" target="_blank">Pedigree Formatter</a> page on the top navigation bar.
+        </p>
+        <div class="last" style="height: 30px"></div>
+    </body>
+</html>
