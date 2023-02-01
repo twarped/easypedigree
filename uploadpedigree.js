@@ -20,17 +20,26 @@ fi.onchange = () => {
         fsWindow.addEventListener("load", () => {
             var script = fsWindow.document.createElement("script");
             var treeApp = fsWindow.document.querySelector("#main-content-section > tree-app")
-                .shadowRoot.querySelector("iron-pages").querySelector("tree-pedigree")
-            var observer = new MutationObserver((m) => {
-                if (m[0].attributeName == "pid") {
-                    fsWindow.fsPedigree = treeApp.shadowRoot.querySelector("#pedigree");
-                    script.innerHTML = injectCode;
-                    fsWindow.document.head.appendChild(script);
-                }
-            })
-
-            console.log(treeApp)
-            observer.observe(treeApp, { attributes: true, childList: true, subtree: true });
+                .shadowRoot.querySelector("iron-pages").querySelector("tree-pedigree");
+            try {
+                treeApp = treeApp.shadowRoot.children.pedigree;
+                console.log(treeApp.pedigreeClass);
+                fsWindow.fsPedigree = treeApp;
+                script.innerHTML = injectCode;
+                fsWindow.document.head.appendChild(script);
+            } catch (e) {
+                console.log(e);
+                var observer = new MutationObserver((m) => {
+                    if (m[0].attributeName == "pid") {
+                        treeApp = treeApp.shadowRoot.querySelector("#pedigree");
+                        console.log(treeApp.pedigreeClass);
+                        fsWindow.fsPedigree = treeApp;
+                        script.innerHTML = injectCode;
+                        fsWindow.document.head.appendChild(script);
+                    }
+                })
+                observer.observe(treeApp, { attributes: true, childList: true, subtree: true });
+            }
         })
     }
 
@@ -145,14 +154,10 @@ window.couplesToClick = { "root": false, "descroot": false };
 var pedigreeObserver = new MutationObserver(mutations => {
     Array.from(mutations).forEach(m => {
         console.log(m.attributeName)
-        if (m.attributeName == "data-test-child-placeholder" && m.target.coords.x == 0) {
-            pedigreeObserver.disconnect();
-            setTimeout(doRoot, 3000)
-        }
+        pedigreeObserver.disconnect();
+        setTimeout(doRoot, 5000)
     });
 })
 
 pedigreeObserver.observe(fsPedigree.shadowRoot, {attributes: true, childList: true, subtree: true});
-
-})();
 `;
