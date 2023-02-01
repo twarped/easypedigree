@@ -201,7 +201,7 @@ function changePedigreeName() {
 }
 
 function printPedigree() {
-    var pedigreeWindow = window.open("/printpedigree.html");
+    var pedigreeWindow = window.open("printpedigree.html");
     pedigreeWindow.window.givenCustomState = customState;
 }
 
