@@ -101,8 +101,8 @@ function updateRootCouplesToClick() {
                     alert("something is bad with your saved pedigree, maybe they changed something... sorry.");
                     reject(e);
                 }
-                console.log(coupleShadowParent.coupleId);
-                console.log("coupleid ", coupleId)
+                // console.log(coupleShadowParent.coupleId);
+                // console.log("coupleid ", coupleId)
                 var button = couple.querySelector("button.append-pedigree");
                 //console.log(button)
                 if (button.ariaLabel.includes("Expand")) {
@@ -143,7 +143,7 @@ function doRoot() {
     return new Promise(async (resolve) => {
         couplesToClick = { "root": false, "descroot": false };
         var nextCouple = await updateRootCouplesToClick();
-        //alert(nextCouple.rootCoupleId);
+        console.log(nextCouple.rootCoupleId);
         await clickNextRootCouple();
         if (coupleIdsToClick.root.length) {
             await doRoot();
