@@ -1,4 +1,4 @@
-javascript: (() => {
+(() => {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(
         { "ROOT": (() => { 
             window.ROOT = [document.querySelector("#main-content-section > tree-app")
