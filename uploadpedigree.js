@@ -143,7 +143,7 @@ function doRoot() {
     return new Promise(async (resolve) => {
         couplesToClick = { "root": false, "descroot": false };
         var nextCouple = await updateRootCouplesToClick();
-        alert(nextCouple.rootCoupleId);
+        //alert(nextCouple.rootCoupleId);
         await clickNextRootCouple();
         if (coupleIdsToClick.root.length) {
             await doRoot();
