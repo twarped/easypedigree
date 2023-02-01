@@ -153,7 +153,6 @@ window.couplesToClick = { "root": false, "descroot": false };
 
 var pedigreeObserver = new MutationObserver(mutations => {
     Array.from(mutations).forEach(m => {
-        console.log(m.attributeName)
         pedigreeObserver.disconnect();
         setTimeout(doRoot, 5000)
     });
