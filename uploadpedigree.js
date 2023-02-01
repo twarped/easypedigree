@@ -15,7 +15,7 @@ fi.onchange = () => {
 
     reader.onload = async (e) => {
         var customState = JSON.parse(e.target.result);
-        var fsWindow = window.open("https://familysearch.org/tree/pedigree/portrait/" + customState.ROOT[1]);
+        var fsWindow = window.open("https://familysearch.org/tree/pedigree/portrait/" + customState.ROOT[1].split("_")[0]);
         fsWindow.customState = customState;
         fsWindow.addEventListener("load", () => {
             var script = fsWindow.document.createElement("script");
