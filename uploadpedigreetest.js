@@ -14,24 +14,45 @@ fi.onchange = () => {
     var reader = new FileReader()
 
     reader.onload = async (e) => {
-        var customState = JSON.parse(e.target.result);
-        var fsWindow = window.open("https://familysearch.org/tree/pedigree/portrait/" + customState.ROOT[1]);
-        fsWindow.customState = customState;
-        fsWindow.addEventListener("load", () => {
-            var script = fsWindow.document.createElement("script");
-            var treeApp = fsWindow.document.querySelector("#main-content-section > tree-app")
-                .shadowRoot.querySelector("iron-pages").querySelector("tree-pedigree")
-            var observer = new MutationObserver((m) => {
-                if (m[0].attributeName == "pid") {
-                    fsWindow.fsPedigree = treeApp.shadowRoot.querySelector("#pedigree");
-                    script.innerHTML = injectCode;
-                    fsWindow.document.head.appendChild(script);
-                }
-            })
+        window.appendLoadingFront = () => {
 
-            console.log(treeApp)
-            observer.observe(treeApp, { attributes: true, childList: true, subtree: true });
-        })
+            if (document.getElementById("loadingFront") == null) {
+                window.loadingFront = document.createElement("div");
+                loadingFront.style = "pointer-events: none; background-color: rgba(0, 0, 0, .2); width: 100%; height: 100%; position: absolute; z-index: 9999999999999999; left: 0; top: 0;"
+                loadingFront.id = "loadingFront";
+                loadingFront.innerHTML = "<h1 id='dotdotdot' style=\"font-family: 'Gill Sans', sans-serif; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);\">LOADING</h1>"
+                
+                window.changeDot = () => {
+                    var dotdotdot = document.getElementById("dotdotdot");
+                    var dots = ["LOADING", "LOADING.", "LOADING..", "LOADING..."]
+                    var dotIndex = dots.indexOf(dotdotdot.textContent)
+                    if (dotIndex === 3) dotIndex = -1;
+                    dotdotdot.textContent = dots[dotIndex + 1]
+                }
+
+                window.dotDotDotInterval = setInterval(changeDot, 1000)
+                document.body.appendChild(loadingFront);
+
+                console.log("Not good");
+            } else {
+                console.log("loadingFront All Good.");
+            }
+
+        }
+
+        //setTimeout(appendLoadingFront, 0);
+        window.fsPedigree = document.querySelector("#main-content-section > tree-app").shadowRoot.querySelector("#pages > tree-pedigree").shadowRoot.querySelector("#pedigree");
+        window.customState = JSON.parse(e.target.result);
+        window.ROOT = customState.ROOT[1];
+        delete customState.ROOT[1];
+        delete customState.DESCROOT[1];
+        window.ahnentafelsToClick = { "root": Object.keys(customState.ROOT).sort(e => e), "descroot": Object.keys(customState.DESCROOT).sort(e => e) };
+        window.coupleIdsToClick = { "root": Object.keys(customState.ROOT).map((e, i) => customState.ROOT[ahnentafelsToClick.root[i]]), "descroot": Object.keys(customState.DESCROOT).map((e, i) => customState.DESCROOT[ahnentafelsToClick.descroot[i]]) };
+        window.ahnentafelsToClickFreeze = structuredClone(ahnentafelsToClick);
+        window.coupleIdsToClickFreeze = structuredClone(coupleIdsToClick);
+        window.couplesToClick = { "root": false, "descroot": false };
+        var didroot = await doRoot();
+        alert("did root ", didroot);
     }
 
     reader.onerror = (e) => {
@@ -41,9 +62,7 @@ fi.onchange = () => {
     reader.readAsText(file)
 }
 
-var injectCode = `
-(async () => {
-window.updateRootCouplesToClick = () => {
+function updateRootCouplesToClick() {
     return new Promise((resolve, reject) => {
         Array.from(coupleIdsToClick.root).forEach((coupleId, i) => {
             var coupleShadowParentUnfiltered = Array.from(document.querySelector("#main-content-section > tree-app")
@@ -51,9 +70,9 @@ window.updateRootCouplesToClick = () => {
                 .shadowRoot.querySelector("#pedigree")
                 .shadowRoot.querySelector("#pedigree > div:nth-child(1)")
                 .querySelectorAll("pedigree-couple-renderer[data-test-couple-ahnentafel]"));
-            var coupleShadowParent = coupleShadowParentUnfiltered.filter((e) => {
+            var coupleShadowParent = coupleShadowParentUnfiltered.filter(e =>
                 e.coupleId.includes(coupleId) && e.coupleId.length < coupleId.length + 3
-            })[0];
+            )[0];
 
             if (coupleShadowParent == undefined) {
                 coupleShadowParent = [];
@@ -96,7 +115,7 @@ window.updateRootCouplesToClick = () => {
     });
 }
 
-window.clickNextRootCouple = () => {
+function clickNextRootCouple() {
     return new Promise((resolve) => {
         var button = couplesToClick.root.querySelector("button.append-pedigree");
         button.click();
@@ -114,7 +133,7 @@ window.clickNextRootCouple = () => {
     })
 }
 
-window.doRoot = () => {
+function doRoot() {
     return new Promise(async (resolve) => {
         for (var i = 0; i < 5; i++) {
             fsPedigree.pedigreeClass.pedigreeEl
@@ -132,27 +151,3 @@ window.doRoot = () => {
         }
     });
 }
-
-window.ROOT = customState.ROOT[1];
-delete customState.ROOT[1];
-delete customState.DESCROOT[1];
-window.ahnentafelsToClick = { "root": Object.keys(customState.ROOT).sort(e => e), "descroot": Object.keys(customState.DESCROOT).sort(e => e) };
-window.coupleIdsToClick = { "root": Object.keys(customState.ROOT).map((e, i) => customState.ROOT[ahnentafelsToClick.root[i]]), "descroot": Object.keys(customState.DESCROOT).map((e, i) => customState.DESCROOT[ahnentafelsToClick.descroot[i]]) };
-window.ahnentafelsToClickFreeze = structuredClone(ahnentafelsToClick);
-window.coupleIdsToClickFreeze = structuredClone(coupleIdsToClick);
-window.couplesToClick = { "root": false, "descroot": false };
-
-var pedigreeObserver = new MutationObserver(mutations => {
-    Array.from(mutations).forEach(m => {
-        console.log(m.attributeName)
-        if (m.attributeName == "data-test-child-placeholder" && m.target.coords.x == 0) {
-            pedigreeObserver.disconnect();
-            setTimeout(doRoot, 3000)
-        }
-    });
-})
-
-pedigreeObserver.observe(fsPedigree.shadowRoot, {attributes: true, childList: true, subtree: true});
-
-})();
-`;
