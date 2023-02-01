@@ -41,7 +41,7 @@
     var a = document.createElement("a"); 
     a.href = dataStr; 
     a.download = prompt("Pedigree (file)name:", "pedigree") + ".json"; 
-    if (a.download == null) return false;
+    if (a.download == "null.json") return false;
     document.body.appendChild(a); 
     a.click(); 
     setTimeout(() => document.body.removeChild(a), 0);
