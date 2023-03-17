@@ -47,7 +47,7 @@
             }),
             "ROOT": Array.from(document.body.querySelector(".listCss_l14v1yn6").querySelectorAll("button.iconButtonCss_i1memprp.lowCss_l18l38sv")).filter(e => e.ariaLabel.includes("Collapse")).map(e => e.parentNode.parentNode.dataset.testid),
             "DESCROOT": Array.from(document.body.querySelector(".listCss_l11vv4r5").querySelectorAll("button.iconButtonCss_i1memprp.lowCss_l18l38sv")).filter(e => e.ariaLabel.includes("Collapse")).map(e => e.parentNode.parentNode.dataset.testid),
-            "VERSION": 2.0
+            "VERSION": 2.1
         }));
         var a = document.createElement("a");
         a.href = dataStr;
