@@ -1,4 +1,4 @@
-// version 2.0 code.
+// version 2.0 code
 
 window.onload = () => {
     window.isDesc = false;
@@ -114,8 +114,15 @@ function loadPeople(customState, descRoot = false, doToast = true) {
     document.getElementById("descroot-toggle").style.border = "";
     document.title = customState.name;
     var peopleData = descRoot ? customState.DESC_PEOPLE_DATA : customState.ROOT_PEOPLE_DATA;
-    for (var i = Object.keys(peopleData).length - 1; i > -1; i--) { //var i = 0; i < Object.keys(peopleData).length; i++
-        createCouple(peopleData[i].husband, peopleData[i].wife, peopleData[i].coupleId);
+    if (descRoot) {
+        createCouple(customState.ROOT_PEOPLE_DATA[0].husband, customState.ROOT_PEOPLE_DATA[0].wife, customState.ROOT_PEOPLE_DATA[0].coupleId)
+        for (var i = 0; i < Object.keys(peopleData).length; i++) {
+            createCouple(peopleData[i].husband, peopleData[i].wife, peopleData[i].coupleId, descRoot);
+        }
+    } else {
+        for (var i = Object.keys(peopleData).length - 1; i > -1; i--) { //var i = 0; i < Object.keys(peopleData).length; i++
+            createCouple(peopleData[i].husband, peopleData[i].wife, peopleData[i].coupleId, descRoot);
+        }
     }
     window.scrollTo(0, 0);
     setTimeout(() => {
@@ -126,7 +133,7 @@ function loadPeople(customState, descRoot = false, doToast = true) {
     }, 1000);
 }
 
-function createCouple(husband, wife, coupleId) {
+function createCouple(husband, wife, coupleId, isDesc = false) {
     var peopleData = coupleId.includes("desc") ? customState.DESC_PEOPLE_DATA : customState.ROOT_PEOPLE_DATA;
     var coupleIds = peopleData.map(e => e.coupleId);
     var nextCoupleId = coupleIds[coupleIds.indexOf(coupleId) + 1] != undefined ? coupleIds[coupleIds.indexOf(coupleId) + 1] : false;
@@ -137,7 +144,7 @@ function createCouple(husband, wife, coupleId) {
     var isFirst = isWife == undefined;
     var isSecond = coupleIds[coupleIds.indexOf(coupleId) + 2] == undefined;
     var isLast = coupleIds[coupleIds.indexOf(coupleId) - 1] == undefined;
-    var genNum = Math.floor(parseInt(coupleId.split("-")[2])) + 1;
+    var genNum = Math.floor(parseInt(coupleId.split("-")[2])) + (isDesc ? 2 : 1);
     if (coupleContainer.childElementCount) {
         var selectorSpacer = document.createElement("div");
         selectorSpacer.className = "bl " + (isWife ? "wife" : "husband") /* + (isSecond ? " center" : "")*/ ;
@@ -150,23 +157,20 @@ function createCouple(husband, wife, coupleId) {
         <div class="husband">
             <h4 class="ancestor-name"><a title="${husband.name == "ADD SPOUSE" ? `No Spouse` : husband.name}" ${husband.id ? `href="https://www.familysearch.org/tree/person/${husband.id}" target="_blank" onclick="toast('That person might not exist anymore, it\\\'s a common occurance.', 5000)"` : ""}>${husband.name == "ADD SPOUSE" ? "No Spouse" : husband.name}</a></h4>
             <h5 class="id"><a ${husband.id ? `href="javascript:copyText('${husband.id}')"` : ""}>${husband.id ? husband.id : "none"}</a></h5>
-            ${(isFirst || isLast) && !isWife ? `<div class="star"></div>` : ``}
+            ${/*(isFirst || isLast) && !isWife ? `<div class="star"></div>` : ``*/""}
         </div> 
         ${`<div class="bl c"></div>` /*!nextCoupleId ? `<div class="gens inline">${genNum}</div>` : `<div class="bl c"></div>`*/}
         <div class="wife ${/*isFirst ? "inline" : ""*/ ""}">
             <h4 class="ancestor-name"><a title="${wife.name == "ADD SPOUSE" ? `No Spouse` : wife.name}" ${wife.id ? `href="https://www.familysearch.org/tree/person/${wife.id}" target="_blank" onclick="toast('That person might not exist anymore, it\\\'s a common occurance.', 5000)"` : ""}>${wife.name == "ADD SPOUSE" ? "No Spouse" : wife.name}</a></h4>
             <h5 class="id"><a ${wife.id ? `href="javascript:copyText('${wife.id}')"` : ""}>${wife.id ? wife.id : "none"}</a></h5>
-            ${(isFirst || isLast) && isWife ? `<div class="star"></div>` : ``}
+            ${/*(isFirst || isLast) && isWife ? `<div class="star"></div>` : ``*/""}
         </div>
         `;
     document.getElementById("couple-container").appendChild(couple);
-    var spacer = document.createElement("div");
-    spacer.className = isLast ? "gens last" : "spacer";
-    spacer.innerHTML = isLast ? genNum : `
-        ${/*nextCoupleId ? `<div class="gens">${genNum}</div>` : ``*/ `<div class="gens ${isFirst ? "first" : ""}">${genNum}</div>`}
-        ${/*!nextCoupleId ? `<div class="bl t"></div>` : ``*/ ""}
-    `;
-    document.getElementById("couple-container").appendChild(spacer);
+    var gen = document.createElement("div");
+    gen.className = "gens"
+    gen.textContent = genNum;
+    document.getElementById("couple-container").appendChild(gen);
 }
 
 function copyText(text, customMessage = "Copied text to clipboard") {
