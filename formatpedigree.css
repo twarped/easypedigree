@@ -1,13 +1,50 @@
+body {
+    font-family: Tahoma;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: clip;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100px;
+    height: fit-content;
+    box-shadow: 0px 3px 3px #bca4d1d1;
+    background-color: white;
+    z-index: 100;
+}
+
+#nav-bar-hidden {
+    width: 100%;
+    height: 100px;
+}
+
+#menu-bar {
+    box-shadow: 0 0 3px rgb(203, 183, 219);
+    z-index: 99;
+}
+
 #pedigree-name {
     font-weight: 1;
     margin-top: 12px;
     margin-left: 12px;
     margin-right: 0px;
     margin-bottom: 0px;
-    width: fit-content;
+    width: calc(100% - 320px);
+    white-space: nowrap;
+    overflow: overlay;
     float: left;
     padding: 3px;
-    border-radius: 5px;
+}
+
+#pedigree-name::-webkit-scrollbar {
+    width: 0px;
 }
 
 #pencil {
@@ -21,6 +58,7 @@
 }
 
 #pedigree-options {
+    position: relative;
     margin-top: 22px;
 }
 
@@ -30,6 +68,7 @@
     font-weight: 1;
     margin-left: 15px;
     margin-right: 0px;
+    height: 30px;
 }
 
 #open-pedigree-in-fs {
@@ -46,8 +85,10 @@
     font-weight: 1;
     margin-right: 30px;
     text-align: center;
-    height: 100%;
+    height: 99px;
     width: 100px;
+    /* margin-top: auto; */
+    /* margin-bottom: auto; */
 }
 
 .root-type-toggle {
@@ -61,14 +102,14 @@
 .gen {
     float: right;
     height: 100%;
-    width: fit-content;
+    width: 99px;
     text-align: center;
     margin-right: 20px;
 }
 
 #total-gens {
     font-size: 60;
-    text-align: right;
+    cursor: pointer;
 }
 
 .banner {
@@ -77,55 +118,112 @@
     font-weight: 1;
 }
 
-#person-container {
-    height: fit-content;
-    width: 100%;
+#couple-container {
+    height: calc(100% - 130px);
+    position: relative;
+    z-index: 98;
     padding-top: 30px;
-    padding-bottom: 30px;
 }
 
-.person {
-    display: block;
-    width: calc(100% - 60px);
+.couple:not(.couple.right):first-child > .wife {
+    background: no-repeat url("goldstar.svg");
+    background-position: calc(100% - 5px) calc(100% - 5px);
+    background-size: 25px;
+}
+
+.couple.right:first-child > .husband {
+    background: no-repeat url("goldstar.svg");
+    background-position: calc(100% - 5px) calc(100% - 5px);
+    background-size: 25px;
+}
+
+.couple:not(.couple.right):nth-last-child(2) > .wife {
+    background: no-repeat url("goldstar.svg");
+    background-position: calc(100% - 5px) calc(100% - 5px);
+    background-size: 25px;
+}
+
+.couple.right:nth-last-child(2) > .husband {
+    background: no-repeat url("goldstar.svg");
+    background-position: calc(100% - 5px) calc(100% - 5px);
+    background-size: 25px;
+}
+
+.couple {
     height: 80px;
-    border: 1px solid grey;
-    box-shadow: 0px 3px 3px grey;
+    width: calc(100% * 2/3);
+}
+
+.couple.right {
+    margin-left: calc(33.33% - 10px);
+    /* overflow-x: clip; */
+}
+
+.couple.two-column {
+    width: 100%;
+}
+
+.couple.two-column > .wife {
+    width: calc(50% - 45px);
     margin-right: 30px;
-    margin-left: 30px;
 }
 
-.person#main {
-    height: 90px;
-    width: calc(100% - 40px);
-    margin-right: 20px;
-    margin-left: 20px;
+.couple.two-column > .husband {
+    width: calc(50% - 45px);
 }
 
-.name-container {
+.couple > .husband {
+    width: calc(50% - 40px);
+    background-color: white;
+    /* border: 1px solid grey; */
+    box-shadow: 0px 2px 3px #2b81a2;
+    margin-left:  30px;
     float: left;
-    width: fit-content;
-    height: 100%
+    height: 80px;
+    border-radius: 5px;
+    position: relative;
+    /* z-index: 2; */
 }
 
-.name-container > h2 {
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-bottom: 0px;
-    margin-right: 0px;
-    font-weight: 1;
+.couple > .wife {
+    border-radius: 5px;
+    width: calc(50% - 40px);
+    background-color: white;
+    /* border: 1px solid grey; */
+    box-shadow: 0px 2px 3px #dd2762;
+    /* margin-right: 30px; */
+    height: 80px;
+    float: left;
+    margin-left: 30px;
+    position: relative;
+    /* margin-right: calc(33%); */
 }
 
-.name-container > h3 {
-    margin-bottom: 15px;
-    margin-left: 15px;
-    margin-right: 0px;
-    margin-top: 0px;
-    font-weight: 1;
+.ancestor-name {
+    text-align: center;
+    margin: 10px;
+    height: 40px;
+    overflow-y: scroll;
 }
 
-#main > .name-container > h3 {
-    margin-bottom: 15px;
-    margin-top: 10px;
+.star {
+    width: 24px;
+    height: 24px;
+    background-image: url("goldstar.svg");
+    position: absolute;
+    bottom: 5;
+    right: 5;
+}
+
+.bl.c {
+    width: 30px;
+    height: 1px;
+    margin: 0;
+    background: linear-gradient(90deg, #82d7ff, #f685a4);
+    margin-top: 40px;
+    margin-bottom: auto;
+    position: absolute;
+    margin-left: calc((1/3) * 100% - 10px);
 }
 
 .bl {
@@ -136,9 +234,72 @@
     background-color: grey;
 }
 
-.id {
-    cursor: pointer;
+.bl.t {
+    width: calc(100% - 60px);
+    height: 1px;
+    margin-left: 30px;
+    margin-top: 20px;
+    background: linear-gradient(90deg, #82d7ff, #f685a4);
+}
+
+.bl.wife {
+    /* margin-right: calc(25% + 6px); */
+    /* box-shadow: 0px 2px 4px #dd2762; */
+    background: linear-gradient(0deg, #df99b9, white);
+}
+
+.bl.husband {
+    /* margin-left: calc(25% + 6px); */
+    /* box-shadow: 0px 2px 4px #2b81a2; */
+    background: linear-gradient(0deg, #a2c4ea, white);
+}
+
+.bl.center {
+    background-color: #c3b0d2;
+}
+
+.bl.center.husband {
+    background: linear-gradient(0deg, #a2c4ea, #c3b0d2);
+}
+
+.bl.center.wife {
+    background: linear-gradient(0deg, #df99b9, #c3b0d2);
+}
+
+.gens {
+    position: absolute;
+    font-size: 13px;
+    /* float: left; */
+    margin-top: 8px;
+    margin-bottom: 7px;
+    margin-right: 0px;
+    text-align: center;
+    width: 30px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+}
+
+.gens.inline {
+    margin: 0;
+    margin-top: 32px;
+    background-color: white;
     width: fit-content;
+}
+
+.gens:nth-child(2) {
+    font-weight: bold;
+    /* width: fit-content; */
+}
+
+.gens:nth-last-child(1) {
+    font-weight: bold;
+    height: 22px;
+}
+
+.id {
+    margin: 5px;
+    text-align: center;
 }
 
 @keyframes fade {
@@ -156,6 +317,91 @@
     }
 }
 
+:root {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+}
+
+@media print {
+    .couple {
+        break-inside: avoid;
+    }
+
+    .couple > .wife, .couple > .husband {
+        width: calc(50% - 42px);
+        box-shadow: none !important;
+        border: 1px solid grey;
+    }
+
+    .couple.two-column > .wife, .couple.two-column > .husband {
+        width: calc(50% - 47px);
+    }
+
+    .bl {
+        background: grey !important;
+    }
+
+    #nav-bar {
+        position: static;
+        box-shadow: none !important;
+        border-bottom: 1px solid grey;
+    }
+
+    #nav-bar-hidden {
+        display: none;
+    }
+
+    .pedigree-option {
+        display: none;
+    }
+
+    .menu-option {
+        display: none;
+    }
+
+    #root-type-toggle-container {
+        display: none;
+    }
+
+    #menu-bar {
+        display: none !important;
+    }
+
+    #pencil {
+        display: none;
+    }
+
+    #pedigree-name {
+        width: calc(100% - 145px);
+        white-space: normal;
+        margin-bottom: 10px;
+    }
+
+    .couple:not(.couple.right):first-child > .wife {
+        background: no-repeat url("blackstar.svg");
+        background-position: calc(100% - 5px) calc(100% - 5px);
+        background-size: 25px;
+    }
+    
+    .couple.right:first-child > .husband {
+        background: no-repeat url("blackstar.svg");
+        background-position: calc(100% - 5px) calc(100% - 5px);
+        background-size: 25px;
+    }
+    
+    .couple:not(.couple.right):nth-last-child(2) > .wife {
+        background: no-repeat url("blackstar.svg");
+        background-position: calc(100% - 5px) calc(100% - 5px);
+        background-size: 25px;
+    }
+    
+    .couple.right:nth-last-child(2) > .husband {
+        background: no-repeat url("blackstar.svg");
+        background-position: calc(100% - 5px) calc(100% - 5px);
+        background-size: 25px;
+    }
+}
+
 toast {
     color: black;
     user-select: none;
@@ -168,4 +414,6 @@ toast {
     border-radius: 20px;
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 101;
 }
