@@ -1,3 +1,5 @@
+<!-- version 2.0 code -->
+
 <html>
 
 <head>
@@ -9,11 +11,11 @@
 
 <body>
     <div id="nav-bar">
-        <h1 id="pedigree-name" onclick="setPedigreeNameActive()" ondblclick="if (!pedigreeNameActive) changePedigreeName()">Pedigree Name</h1>
+        <h1 id="pedigree-name">Pedigree Name</h1>
         <img src="pencil.svg" id="pencil" onclick="changePedigreeName()">
         <div class="gen">
             <div>Gens:</div>
-            <div id="total-gens">9999</div>
+            <div id="total-gens" title="Click to Quick Scroll" onclick="window.scrollTo({behavior: 'smooth', top: document.body.scrollTop ? 0 : document.body.scrollHeight })">999</div>
         </div>
         <div id="root-type-toggle-container">
             <div class="root-type-toggle" id="root-toggle" style="border: 1px solid grey" onclick="toggleRootType(this)">ROOT</div>
@@ -33,115 +35,427 @@
         <a class="menu-option dropdown" href="formatpedigree.html">Pedigree Formatter</a>
     </div>
     <div id="nav-bar-hidden"></div>
-    <div id="person-container">
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
-            </div>
-        </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+    <div id="couple-container">
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+                <div class="star"></div>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens first">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
-            </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
         </div>
-        <div class="bl"></div>
-        <div class="person">
-            <div class="name-container">
-                <h2><a>Ancestor Name or Couple</a></h2>
-                <h3 class="id" onclick="copyText(this.textContent)">XXXX-XXX</h3>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
-            <div class="gen">
-                <div>Gen:</div>
-                <div class="gens" style="font-size: 40;">9999</div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
             </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl husband"></div>
+        <div class="couple right">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens ">999</div>
+        </div>
+        <div class="bl wife"></div>
+        <div class="couple">
+            <div class="husband">
+                <h4 class="ancestor-name"><a title="Husband">Husband</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+            </div> 
+            <div class="bl c"></div>
+            <div class="wife ">
+                <h4 class="ancestor-name"><a title="Wife">Wife</a></h4>
+                <h5 class="id"><a>Person ID</a></h5>
+                <div class="star"></div>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="gens last">999</div>
         </div>
     </div>
 </body>
