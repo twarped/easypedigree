@@ -197,7 +197,7 @@ function setTotalGens(genNum = 0, descGens = false) {
     if (genNum) {
         totalGenElem.textContent = genNum;
     } else {
-        genNum = Object.values(customState[descGens == true ? "DESC_PEOPLE_DATA" : "ROOT_PEOPLE_DATA"]).length;
+        genNum = Object.values(customState[descGens == true ? "DESC_PEOPLE_DATA" : "ROOT_PEOPLE_DATA"]).length + (descGens ? 1 : 0);
         totalGenElem.textContent = genNum;
     }
 }
