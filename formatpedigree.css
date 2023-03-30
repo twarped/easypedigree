@@ -270,11 +270,12 @@ body {
     position: absolute;
     font-size: 13px;
     /* float: left; */
-    margin-top: 8px;
+    margin-top: 7px;
     margin-bottom: 7px;
     margin-right: 0px;
     text-align: center;
     width: 30px;
+    height: 16px;
     margin-left: 50%;
     transform: translateX(-50%);
     background-color: white;
@@ -322,13 +323,14 @@ body {
     -webkit-print-color-adjust: exact !important;
 }
 
-@media print {
+/* @media print { */
     .couple {
         break-inside: avoid;
     }
 
     .couple > .wife, .couple > .husband {
         width: calc(50% - 42px);
+        height: 78px;
         box-shadow: none !important;
         border: 1px solid grey;
     }
@@ -378,29 +380,29 @@ body {
     }
 
     .couple:not(.couple.right):first-child > .wife {
-        background: no-repeat url("blackstar.svg");
-        background-position: calc(100% - 5px) calc(100% - 5px);
-        background-size: 25px;
+        background: no-repeat url("blackstar.svg") !important;
+        background-position: calc(100% - 5px) calc(100% - 5px) !important;
+        background-size: 25px !important;
     }
     
     .couple.right:first-child > .husband {
-        background: no-repeat url("blackstar.svg");
-        background-position: calc(100% - 5px) calc(100% - 5px);
-        background-size: 25px;
+        background: no-repeat url("blackstar.svg") !important;
+        background-position: calc(100% - 5px) calc(100% - 5px) !important;
+        background-size: 25px !important;
     }
     
     .couple:not(.couple.right):nth-last-child(2) > .wife {
-        background: no-repeat url("blackstar.svg");
-        background-position: calc(100% - 5px) calc(100% - 5px);
-        background-size: 25px;
+        background: no-repeat url("blackstar.svg") !important;
+        background-position: calc(100% - 5px) calc(100% - 5px) !important;
+        background-size: 25px !important;
     }
     
     .couple.right:nth-last-child(2) > .husband {
-        background: no-repeat url("blackstar.svg");
-        background-position: calc(100% - 5px) calc(100% - 5px);
-        background-size: 25px;
+        background: no-repeat url("blackstar.svg") !important;
+        background-position: calc(100% - 5px) calc(100% - 5px) !important;
+        background-size: 25px !important;
     }
-}
+/* } */
 
 toast {
     color: black;
