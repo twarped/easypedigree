@@ -323,7 +323,7 @@ body {
     -webkit-print-color-adjust: exact !important;
 }
 
-/* @media print { */
+@media print {
     .couple {
         break-inside: avoid;
     }
@@ -402,7 +402,7 @@ body {
         background-position: calc(100% - 5px) calc(100% - 5px) !important;
         background-size: 25px !important;
     }
-/* } */
+}
 
 toast {
     color: black;
