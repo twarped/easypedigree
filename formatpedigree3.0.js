@@ -24,7 +24,7 @@ function getElementTranslate(el = content) {
 /**
  * Uses lastMouseEvent to calculate a smooth translate for panning an element
  * @param {MouseEvent} ev The MouseEvent to convert to a smooth scroll/smooth translate
- * @param {HTMLElement} el Defaults to the content element, but can be changed. However, I haven't done that yet
+ * @param {HTMLElement=} el Defaults to the content element, but can be changed. However, I haven't done that yet
  * 
  * @example window.addEventListener('mousemove', 
                 ev => {
@@ -64,6 +64,7 @@ function scalePerimeter(scale, el) {
 }
 
 let lastMouseEvent = new MouseEvent('mousedown');
+let lastWheelEvent = new WheelEvent('wheel');
 let isMouseDown = false;
 
 let scale = 1;
@@ -93,21 +94,34 @@ window.addEventListener('wheel',
      * @param {WheelEvent} ev The wheel event to use in the zoom calculation
      */
     ev => {
+        if (lastMouseEvent.deltaY == undefined && ev.deltaY > 0) lastWheelEvent = ev;
+
         ev.preventDefault();
         
         if (!ev.ctrlKey) {
             smoothTranslate(ev);
             return;
         };
+
         
-        content.style.transformOrigin = `${content.offsetWidth - ev.offsetX}px ${content.offsetHeight - ev.offsetY}px`;
+        
+        // content.style.transformOrigin = `${content.offsetWidth - ev.offsetX}px ${content.offsetHeight - ev.offsetY}px`;
         scale = clamp(scale - ev.deltaY * 0.001, 0.01, 1.2); // 0.001 was a multiplier that I found was easy to use when zooming in and out
         content.style.scale = scale;
         ({ visibleWidth, visibleHeight } = scalePerimeter(scale, content)); // Reassign visibleWidth and visibleHeight to the rescaled content element
 
         if (ev.shiftKey) console.log(ev);
         let {x, y} = getElementTranslate();
-        // content.style.translate = `${x - ev.deltaY}px ${y - ev.deltaY}px`;
+        console.log('transformX: ', x, ', transformY: ', y);
+        console.log('clientX: ', ev.clientX, ', clientY: ', ev.clientY);
+        console.log('last offsetX: ', lastMouseEvent.offsetX, ', last offsetY: ', lastMouseEvent.offsetY);
+        console.log('offsetX: ', ev.offsetX, ', offsetY: ', ev.offsetY);
+        console.log('deltaY: ', ev.deltaY);
+        console.log('wheelDeltaY: ', ev.wheelDeltaY);
+        content.style.translate = `${ x + (ev.offsetX - lastMouseEvent.offsetX) }px ${ y + (ev.offsetY - lastMouseEvent.offsetY)}px`;
+        console.log(content.style.translate);
+
+        lastMouseEvent = ev;
     },
 { passive: false });
 
